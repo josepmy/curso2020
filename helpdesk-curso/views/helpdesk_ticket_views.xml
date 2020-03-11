@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+	<record id="helpdesk_ticket_action" model="ir.actions.act_window">
+        <field name="name">Tickets</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="view_mode">tree,form</field>
+        <!--<field name="view_type">form</field>  solo para V12-->
+	</record>
+
+    <menuitem id="menu_hd_ticket" 
+    		name="Tickets" 
+            action="helpdesk_ticket_action" 
+            sequence="100"/>
+            <!-- groups="base.group_user"  lo quitamos pues ya lo 
+            tenemos en el modelo-->
+            <!-- parent="hd_menu_root" -->
+</odoo>
