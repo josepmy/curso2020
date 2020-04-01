@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  <record id="helpdesk_set_responsable_view_form" model="ir.ui.view">
+    <field name="name">helpdesk.set_responsable.form</field>
+    <field name="model">helpdesk.set.responsable</field>
+    <field name="arch" type="xml">
+      <form string="Set Responsable">
+        <p>
+          ¿Estas seguro que quieres asignarte como responsable?
+          <group>
+            <field name="tickets_qty" readonly="1" />
+          </group>
+        </p>
+        <footer>
+          <button name="set_responsable"  type="object" string="Asignar Ticket" class="btn-primary"/>
+          <button name="set_responsable"  special="cancel" string="Cancelar" class="btn-secondary"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="helpdesk_set_responsable_action_form" model="ir.actions.act_window">
+    <field name="name">Set Responsable</field>
+    <field name="res_model">helpdesk.set.responsable</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="helpdesk_set_responsable_view_form"/>
+    <field name="target">new</field>
+  </record>
+
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+  <record id="helpdesk_ticket_stage_view_form" model="ir.ui.view">
+    <field name="name">helpdesk.ticket.stage.form</field>
+    <field name="model">helpdesk.ticket.stage</field>
+    <field name="arch" type="xml">
+      <form string="Ticket Stage">
+        <sheet>
+          <group>
+            <field name="name"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="helpdesk_ticket_stage_view_tree" model="ir.ui.view">
+    <field name="name">helpdesk.ticket.stage.tree</field>
+    <field name="model">helpdesk.ticket.stage</field>
+    <field name="arch" type="xml">
+      <tree string="main">
+        <field name="name"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="helpdesk_ticket_stage_action_form" model="ir.actions.act_window">
+    <field name="name">Stage</field>
+    <field name="res_model">helpdesk.ticket.stage</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  
+  <menuitem id="menu_helpdesk_ticket_stage"
+    parent="helpdesk-curso.menu_helpdesk_ticket_config_menu"
+    action="helpdesk_ticket_stage_action_form" sequence="10"/>
+
+</odoo>
