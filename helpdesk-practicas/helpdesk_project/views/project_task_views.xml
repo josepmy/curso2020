@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Inherit Form view -->
+    <record id="project_task_ticket_view_form" model="ir.ui.view">
+      <field name="name">project.task.ticket.view.form</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_subtask']" position="after">
+          <button class="oe_stat_button" type="object"
+              name="action_view_tickets_open" icon="fa-ticket">
+              <div class="o_field_widget o_stat_info">
+                  <span class="o_stat_value"><field name="tickets_open_count" widget="statinfo"/> de <field name="tickets_count" widget="statinfo"/></span>
+                  <span class="o_stat_text">Tickets Abiertos/Totales</span>
+              </div>
+          </button>
+        </xpath>
+        <xpath expr="//button[@name='action_assign_to_me']" position="after">
+          <button
+            string="New Ticket"
+            name="action_new_ticket"
+            type="object"
+          />
+        </xpath>
+        <xpath expr="//notebook" position="inside">
+          <page string="Tickets" name="Tickets">
+            <group>
+              <field name="ticket_ids"/>
+              <field name="tickets_count" string="Tickets Totales"/>
+              <field name="tickets_open_count" string="Tickets Abiertos"/>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="task_action_ticket_new" model="ir.actions.act_window">
+      <field name="name">Ticket</field>
+      <field name="res_model">helpdesk.ticket</field>
+      <field name="view_mode">form</field>
+      <field name="domain">[('task_id', '=', active_id)]</field>
+    </record>
+
+    <record id="task_action_ticket_tree_open" model="ir.actions.act_window">
+      <field name="name">Tickets</field>
+      <field name="res_model">helpdesk.ticket</field>
+      <field name="view_mode">tree</field>
+      <field name="domain">[('task_id', '=', active_id)]</field>
+    </record>
+
+    <record id="task_action_ticket_tree_open" model="ir.actions.act_window">
+        <field name="name">Tickets</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">helpdesk.ticket</field>
+        <field name="view_mode">kanban,tree,form</field>        
+    </record>
+
+</odoo>

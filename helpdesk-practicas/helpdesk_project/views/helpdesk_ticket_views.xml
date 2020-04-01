@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+
+  <!-- Inherit Form view -->
+  <record id="helpdesk_ticket_project_view_form" model="ir.ui.view">
+    <field name="name">helpdesk_ticket.project.view.form</field>
+    <field name="model">helpdesk.ticket</field>
+    <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//notebook" position="inside">
+        <page string="Project" name="Project">
+          <group>
+            <group>
+              <field name="project_id"/>
+            </group>
+            <group>
+              <field name="task_id"/>
+            </group>
+          </group>
+
+        </page>
+      </xpath>
+    </field>
+  </record>
+
+
+  <record id="helpdesek_ticket_project_view_search" model="ir.ui.view">
+    <field name="name">helpdesek_ticket.project.view.search</field>
+    <field name="model">helpdesk.ticket</field>
+    <field name="inherit_id" ref="helpdesk_mgmt.helpdesk_ticket_view_search"/>
+    <field name="arch" type="xml">
+      <field name="stage_id" position="after">
+        <field name="project_id"/>
+        <field name="task_id"/>
+      </field>      
+      <group position="inside">
+        <filter string="Project" name="Project" domain="[]" context="{'group_by': 'project_id'}"/>
+      </group>
+    </field>
+  </record>
+
+</odoo>
